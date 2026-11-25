@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+backend/node_modules/
+dashboard/node_modules/
+frontend/node_modules/
+
+# Environment variables (keep your secrets safe!)
+.env
+backend/.env
+
+# Build outputs
+build/
+frontend/build/
+dashboard/build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# React cache
+.cache/
+dashboard/.cache/
+frontend/.cache/
+
+# Package lock (optional - remove if you want to commit it)
+# package-lock.json
