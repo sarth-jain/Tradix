@@ -28,6 +28,19 @@ const Holdings = () => {
     ],
   };
 
+  const totalInvestment = allHoldings.reduce(
+    (sum, stock) => sum + stock.avg * stock.qty,
+    0
+  );
+  const currentValue = allHoldings.reduce(
+    (sum, stock) => sum + stock.price * stock.qty,
+    0
+  );
+  const pnl = currentValue - totalInvestment;
+  const pnlPercent =
+    totalInvestment > 0 ? ((pnl / totalInvestment) * 100).toFixed(2) : 0;
+  const pnlClass = pnl >= 0 ? "profit" : "loss";
+
   // export const data = {
   //   labels,
   //   datasets: [
@@ -88,18 +101,20 @@ const Holdings = () => {
       <div className="row">
         <div className="col">
           <h5>
-            29,875.<span>55</span>{" "}
+            {totalInvestment.toFixed(2)}{" "}
           </h5>
           <p>Total investment</p>
         </div>
         <div className="col">
           <h5>
-            31,428.<span>95</span>{" "}
+            {currentValue.toFixed(2)}{" "}
           </h5>
           <p>Current value</p>
         </div>
         <div className="col">
-          <h5>1,553.40 (+5.20%)</h5>
+          <h5 className={pnlClass}>
+            {pnl.toFixed(2)} ({pnl >= 0 ? "+" : ""}{pnlPercent}%)
+          </h5>
           <p>P&L</p>
         </div>
       </div>

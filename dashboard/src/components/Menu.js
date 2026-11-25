@@ -94,6 +94,50 @@ const Menu = () => {
           <div className="avatar">ZU</div>
           <p className="username">USERID</p>
         </div>
+
+        {isProfileDropdownOpen && (
+          <div
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "60px",
+              background: "#fff",
+              border: "1px solid #e0e0e0",
+              borderRadius: "6px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              zIndex: 1000,
+              minWidth: "160px",
+            }}
+          >
+            {[
+              "Profile",
+              "Account statements",
+              "Funds",
+              "Settings",
+              "Logout",
+            ].map((item, i) => (
+              <p
+                key={i}
+                style={{
+                  margin: 0,
+                  padding: "10px 16px",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                  borderBottom: i < 4 ? "1px solid #f0f0f0" : "none",
+                  color: item === "Logout" ? "#e74c3c" : "#333",
+                }}
+                onMouseEnter={(e) =>
+                  (e.target.style.backgroundColor = "#f9f9f9")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor = "transparent")
+                }
+              >
+                {item}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
